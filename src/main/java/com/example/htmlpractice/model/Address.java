@@ -12,6 +12,4 @@ public class Address {
     String message;
     List<AddressData> results = new ArrayList<>();
     int status;
-
-
 }
