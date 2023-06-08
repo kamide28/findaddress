@@ -11,7 +11,7 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/address")
-    public String find(@RequestParam("zipcode") String zipcode) {
+    public Address find(@RequestParam("zipcode") String zipcode) {
         return addressService.findZipCode(zipcode);
     }
 }

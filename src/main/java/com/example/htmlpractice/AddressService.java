@@ -11,8 +11,8 @@ public class AddressService {
     private RestTemplate restTemplate;
     private final String url = "https://zipcloud.ibsnet.co.jp/api/search?zipcode={zipcode}";
 
-    public String findZipCode(String zipcode) {
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class, zipcode);
+    public Address findZipCode(String zipcode) {
+        ResponseEntity<Address> response = restTemplate.getForEntity(url, Address.class, zipcode);
         return response.getBody();
     }
 }
