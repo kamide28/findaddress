@@ -1,5 +1,6 @@
 package com.example.htmlpractice;
 
+import com.example.htmlpractice.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,7 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/address")
-    public String find(@RequestParam("zipcode") String zipcode) {
+    public Address find(@RequestParam("zipcode") String zipcode) {
         return addressService.findZipCode(zipcode);
     }
 }
