@@ -10,4 +10,5 @@ public class AddressData {
     String address1;
     String address2;
     String address3;
+    
 }
