@@ -2,7 +2,7 @@ package com.example.htmlpractice;
 
 import com.example.htmlpractice.model.Address;
 import com.example.htmlpractice.model.AddressData;
-import com.example.htmlpractice.model.ZipcodeFrom;
+import com.example.htmlpractice.model.ZipCodeForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +21,14 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/")
-    public String index(Model model, ZipcodeFrom zipcode) {
+    public String index(Model model, ZipCodeForm zipcode) {
         model.addAttribute("zipcodeForm", zipcode);
         return "index";
     }
 
     @GetMapping("/address")
     public String find(Model model, @ModelAttribute(name = "zipcodeForm")
-    @Validated ZipcodeFrom zipcode, BindingResult bindingResult) {
+    @Validated ZipCodeForm zipcode, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return index(model, zipcode);
         }
