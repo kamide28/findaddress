@@ -3,7 +3,6 @@ package com.example.htmlpractice;
 import com.example.htmlpractice.model.Address;
 import com.example.htmlpractice.model.AddressData;
 import com.example.htmlpractice.model.ZipcodeFrom;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +21,16 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, ZipcodeFrom zipcode) {
+        model.addAttribute("zipcodeForm", zipcode);
         return "index";
     }
 
     @GetMapping("/address")
-    public String find(HttpSession httpSession, Model model, @ModelAttribute(name = "zipcodeForm")
+    public String find(Model model, @ModelAttribute(name = "zipcodeForm")
     @Validated ZipcodeFrom zipcode, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "index";
+            return index(model, zipcode);
         }
         Address address = addressService.findZipCode(zipcode.getZipcode());
         model.addAttribute("addressinfo", address);
