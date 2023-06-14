@@ -5,12 +5,12 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-public class Zipcode {
+public class ZipcodeFrom {
     @Length(min = 3, max = 7, message = "3から７文字で入力してください")
     @Pattern(regexp = "^[0-9]+$", message = "数値を入力してください")
     private String zipcode;
 
-    public Zipcode(String zipcode) {
+    public ZipcodeFrom(String zipcode) {
         this.zipcode = zipcode;
     }
 
