@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Data
 public class ZipCodeForm {
-    @Length(min = 3, max = 7, message = "3から７文字で入力してください")
+    @Length(min = 7, max = 7, message = "７桁で入力してください")
     @Pattern(regexp = "^[0-9]+$", message = "数値を入力してください")
     private String zipcode;
 
