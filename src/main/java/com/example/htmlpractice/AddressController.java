@@ -34,10 +34,13 @@ public class AddressController {
         }
         Address address = addressService.findZipCode(zipcode.getZipcode());
         model.addAttribute("addressinfo", address);
-        System.out.println(address.getResults());
-        List<AddressData> addressData = new ArrayList<>(address.getResults());
-//住所が存在しない時の処理はまた記載する
-        model.addAttribute("addressbody", addressData);
+        if (address.getResults() != null) {
+            List<AddressData> addressData = new ArrayList<>(address.getResults());
+            model.addAttribute("addressbody", addressData);
+        } else {
+            String message = "郵便番号(" + zipcode.getZipcode() + ")は存在しない可能性があります、入力した数字を確認してください";
+            model.addAttribute("addressnullmessage", message);
+        }
         return "address";
     }
 }
