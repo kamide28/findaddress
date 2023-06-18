@@ -21,24 +21,24 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/")
-    public String index(Model model, ZipCodeForm zipcode) {
-        model.addAttribute("zipcodeForm", zipcode);
+    public String index(Model model, ZipCodeForm zipCode) {
+        model.addAttribute("zipcodeForm", zipCode);
         return "index";
     }
 
     @GetMapping("/address")
-    public String find(Model model, @ModelAttribute(name = "zipcodeForm")
-    @Validated ZipCodeForm zipcode, BindingResult bindingResult) {
+    public String find(Model model, @ModelAttribute(name = "zipCodeForm")
+    @Validated ZipCodeForm zipCode, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return index(model, zipcode);
+            return index(model, zipCode);
         }
-        Address address = addressService.findZipCode(zipcode.getZipcode());
+        Address address = addressService.findZipCode(zipCode.getZipCode());
         model.addAttribute("addressinfo", address);
         if (address.getResults() != null) {
             List<AddressData> addressData = new ArrayList<>(address.getResults());
             model.addAttribute("addressbody", addressData);
         } else {
-            String message = "郵便番号(" + zipcode.getZipcode() + ")は存在しない可能性があります、入力した数字を確認してください";
+            String message = "郵便番号(" + zipCode.getZipCode() + ")は存在しない可能性があります、入力した数字を確認してください";
             model.addAttribute("addressnullmessage", message);
         }
         return "address";

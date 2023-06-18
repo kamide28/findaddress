@@ -8,13 +8,13 @@ import org.hibernate.validator.constraints.Length;
 public class ZipCodeForm {
     @Length(min = 7, max = 7, message = "7桁で入力してください")
     @Pattern(regexp = "^[0-9]+$", message = "数値を入力してください")
-    private String zipcode;
+    private String zipCode;
 
     public ZipCodeForm(String zipcode) {
-        this.zipcode = zipcode;
+        this.zipCode = zipcode;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 }

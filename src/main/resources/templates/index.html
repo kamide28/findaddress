@@ -8,9 +8,10 @@
 <h1>住所検索</h1>
 <p>検索したい郵便番号を半角数字7桁で入力しEnterキーを押してください</p>
 <form action="/address" method="get">
-	<input type="text" name="zipcode" placeholder="郵便番号入力欄"/>
-	<div th:if="${#fields.hasErrors('zipcodeForm.zipcode')}"
-		 th:errors="*{zipcodeForm.zipcode}"></div>
+	<input type="text" name="zipCode" placeholder="郵便番号入力欄"/>
+	<div th:if="${#fields.hasErrors('zipCodeForm.zipCode')}"
+		 th:errors="*{zipCodeForm.zipCode}">
+	</div>
 </form>
 </body>
 </html>
