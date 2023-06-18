@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @Validated
@@ -34,13 +35,13 @@ public class AddressController {
         }
         Address address = addressService.findZipCode(zipCode.getZipCode());
         model.addAttribute("addressinfo", address);
-        if (address.getResults() != null) {
-            List<AddressData> addressData = new ArrayList<>(address.getResults());
-            model.addAttribute("addressbody", addressData);
-        } else {
+        if (Objects.isNull(address.getResults())) {
             String message = "郵便番号(" + zipCode.getZipCode() + ")は存在しない可能性があります、入力した数字を確認してください";
             model.addAttribute("addressnullmessage", message);
+            return "address";
         }
+        List<AddressData> addressData = new ArrayList<>(address.getResults());
+        model.addAttribute("addressbody", addressData);
         return "address";
     }
 }
