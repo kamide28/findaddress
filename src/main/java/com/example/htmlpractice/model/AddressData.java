@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddressData {
-    int zipCode;
+    int zipcode;
     String address1;
     String address2;
     String address3;

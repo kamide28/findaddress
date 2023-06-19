@@ -10,11 +10,12 @@ public class ZipCodeForm {
     @Pattern(regexp = "^[0-9]+$", message = "数値を入力してください")
     private String zipCode;
 
-    public ZipCodeForm(String zipcode) {
-        this.zipCode = zipcode;
+    public ZipCodeForm(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getZipCode() {
         return zipCode;
     }
+    
 }
