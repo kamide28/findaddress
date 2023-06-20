@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <head>
-    <meta charset="UTF-8">
-    <title>検索結果</title>
+	<meta charset="UTF-8">
+	<title>検索結果</title>
 </head>
 <div>
-    <body>
-    <h3>検索結果</h3>
-    <tr th:each="body : ${addressbody}">
-        <p>郵便番号:
-        <td th:text="${body.zipcode}"></td>
-        </p>
-        <p>都道府県名:
-        <td th:text="${body.address1}"></td>
-        </p>
-        <p>市区町村名:
-        <td th:text="${body.address2}"></td>
-        </p>
-        <p>町域名:
-        <td th:text="${body.address3}"></td>
-        </p>
-    </tr>
-    <p>ステータスコード:
-    <td th:text="${addressinfo.status}"></td>
-    </p>
-    </body>
+	<body>
+	<h3>検索結果</h3>
+	<div class="mx-5">
+		<tr th:each="body : ${addressbody}">
+			<p>郵便番号:
+			<td th:text="${body.zipcode}"></td>
+			</p>
+			<p>都道府県名:
+			<td th:text="${body.address1}"></td>
+			</p>
+			<p>市区町村名:
+			<td th:text="${body.address2}"></td>
+			</p>
+			<p>町域名:
+			<td th:text="${body.address3}"></td>
+			</p>
+		</tr>
+		<p>ステータスコード:
+		<td th:text="${addressinfo.status}"></td>
+		</p>
+		<p>
+		<td th:text="${addressinfo.message}"></td>
+		</p>
+		<td th:text="${addressnullmessage}"></td>
+	</div>
+	</body>
 </div>
 </html>
